@@ -1,0 +1,13 @@
+.order-list {
+  padding: 2rem;
+  background-color: white;
+}
+
+.order-list h2 {
+  color: #c62828;
+  margin-bottom: 1rem;
+}
+
+.order-list li {
+  margin-bottom: 0.5rem;
+}
