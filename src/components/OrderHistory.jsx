@@ -1,5 +1,4 @@
-import React from 'react';
-import '../styles/OrderHistory.css';
+import React from 'react';;
 
 const OrderHistory = () => {
      const history = [

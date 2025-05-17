@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/ProductDetail.css';
 
 const ProductDetail = () => {
     // Dummy data for product details
@@ -19,3 +18,5 @@ const ProductDetail = () => {
         </div>
     );
 }
+
+export default ProductDetail;

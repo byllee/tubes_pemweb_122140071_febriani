@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-const StoreContext = createContext();
+export const StoreContext = createContext();
 
 const initialState = {
   cart: [],
-  favorites: []
+  favorites: [],
 };
 
 function reducer(state, action) {
@@ -26,6 +26,7 @@ function reducer(state, action) {
 
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  
   return (
     <StoreContext.Provider value={{ state, dispatch }}>
       {children}
