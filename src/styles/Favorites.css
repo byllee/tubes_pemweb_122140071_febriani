@@ -1,0 +1,26 @@
+.favorites {
+  padding: 2rem;
+  background-color: white;
+}
+
+.favorites h2 {
+  color: #c62828;
+}
+
+.favorites ul {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites li {
+  margin-bottom: 0.5rem;
+}
+
+.favorites button {
+  margin-left: 1rem;
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
