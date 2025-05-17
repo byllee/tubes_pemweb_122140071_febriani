@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/ProductDetail.css';
+import '../styles/ProductDetail.css';
 
 const ProductDetail = () => {
     // Dummy data for product details

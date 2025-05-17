@@ -1,5 +1,5 @@
 import React from 'react';
-import './OrderList.css';
+import '../styles/OrderList.css';
 
 const OrderList = () => {
   const dummyOrders = [

@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Catalog from './components/Catalog';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
+import Favorites from './components/Favorites';
+import OrderList from './components/OrderList';
+import OrderForm from './components/OrderForm';
+import OrderHistory from './components/OrderHistory';
+import ProductDetail from './components/ProductDetail';
+import Login from './components/Login/Login';
+import Register from './components/Register';
+import { StoreProvider } from './context/StoreContext';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Catalog />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/orders" element={<OrderList />} />
+          <Route path="/order-form" element={<OrderForm />} />
+          <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </StoreProvider>
   );
-}
+};
 
 export default App;
