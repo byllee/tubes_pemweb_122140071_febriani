@@ -7,7 +7,7 @@ const Favorites = () => {
     
     return (
     <div className="favorites">
-      <h2>Favorit</h2>
+      <h2>Favorite</h2>
       {favorites.length === 0 ? (
         <p>Tidak ada item removeFromFavorites.</p>
       ) : (
