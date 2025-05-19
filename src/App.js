@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter sebagai Router
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Catalog from './components/Catalog';
@@ -12,25 +12,30 @@ import OrderHistory from './components/OrderHistory';
 import ProductDetail from './components/ProductDetail';
 import Login from './components/Login';
 import Register from './components/Register';
+import NotFound from './pages/NotFound'; 
 import { StoreProvider } from './context/StoreContext';
 
 const App = () => {
   return (
     <StoreProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Catalog />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/orders" element={<OrderList />} />
-        <Route path="/order-form" element={<OrderForm />} />
-        <Route path="/order-history" element={<OrderHistory />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <Footer />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Catalog />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/orders" element={<OrderList />} />
+          <Route path="/order-form" element={<OrderForm />} />
+          <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </Router>
     </StoreProvider>
   );
 };
