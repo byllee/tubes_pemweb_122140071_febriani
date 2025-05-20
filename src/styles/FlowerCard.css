@@ -44,3 +44,25 @@
   font-weight: bold;
   font-size: 1rem;
 }
+
+.flower-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: 1px solid #c62828;
+  color: #c62828;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.favorite-button.favorited {
+  background-color: #c62828;
+  color: white;
+}
+

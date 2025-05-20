@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Catalog.css';
 import axios from 'axios';
-import FlowerCard from '../components/FlowerCard'; // tambahkan ini
+import FlowerCard from '../components/FlowerCard'; 
 
 const Catalog = () => {
   const [products, setProducts] = useState([]);

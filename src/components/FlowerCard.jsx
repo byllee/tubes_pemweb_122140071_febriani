@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/FlowerCard.css'; 
+import { StoreContext } from '../context/StoreContext';
 
 const FlowerCard = ({ flower }) => {
+  const { state, dispatch } = useContext(StoreContext);
+
+  const isFavorited = state.favorites.some(item => item.id === flower.id);
+
+  const handleAddToCart = () => {
+    dispatch({ type: 'ADD_TO_CART', payload: flower });
+  };
+
+  const handleToggleFavorite = () => {
+    if (isFavorited) {
+      dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: flower.id });
+    } else {
+      dispatch({ type: 'ADD_TO_FAVORITES', payload: flower });
+    }
+  };
+
   return (
     <div className="flower-card">
       <div className="image-wrapper">
@@ -11,7 +28,18 @@ const FlowerCard = ({ flower }) => {
         <h3 className="flower-title">{flower.name}</h3>
         <p className="flower-description">{flower.description}</p>
         <p className="flower-price">Rp {flower.price.toLocaleString()}</p>
-        <button className="flower-button">Tambahkan ke keranjang</button>
+        
+        <div className="flower-actions">
+          <button className="flower-button" onClick={handleAddToCart}>
+            Tambahkan ke Keranjang
+          </button>
+          <button 
+            className={`favorite-button ${isFavorited ? 'favorited' : ''}`} 
+            onClick={handleToggleFavorite}
+          >
+            {isFavorited ? '❤️ Favorit' : '🤍 Tambah Favorit'}
+          </button>
+        </div>
       </div>
     </div>
   );
