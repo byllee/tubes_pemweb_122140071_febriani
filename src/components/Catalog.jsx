@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Catalog.css';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import FlowerCard from '../components/FlowerCard'; // tambahkan ini
 
 const Catalog = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/products') // Ganti dengan URL API yang sesuai
+    axios.get('/api/products')
       .then(response => setProducts(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -17,12 +17,7 @@ const Catalog = () => {
       <h2>Katalog Bunga</h2>
       <div className="product-grid">
         {products.map(product => (
-          <div className="product-card" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>Rp {product.price}</p>
-            <Link to={`/product/${product.id}`}>Lihat Detail</Link>
-          </div>
+          <FlowerCard key={product.id} product={product} />
         ))}
       </div>
     </div>
