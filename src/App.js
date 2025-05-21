@@ -35,8 +35,6 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          {/* 404 Not Found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

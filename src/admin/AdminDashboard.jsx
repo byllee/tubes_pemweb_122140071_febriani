@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import ProductList from './ProductList';
-import OrderFormManager from './OrderFormManager';
+import ProductList from '../admin/ProductList';
+import OrderFormManager from '../admin/OrderFormManager';
 import '../styleadmin/AdminDashboard.css';
-
 
 const AdminDashboard = () => {
   const [selectedTab, setSelectedTab] = useState('products');
