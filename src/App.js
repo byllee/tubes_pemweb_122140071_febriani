@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Catalog from './components/Catalog';
@@ -13,7 +14,7 @@ import ProductDetail from './components/ProductDetail';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './pages/NotFound';
-import Home from './pages/Home'; 
+import Home from './pages/Home';
 import { StoreProvider } from './context/StoreContext';
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} /> {/* ⬅️ Beranda utama */}
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} /> 
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -33,6 +35,8 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          {/* 404 Not Found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
@@ -42,4 +46,3 @@ const App = () => {
 };
 
 export default App;
-

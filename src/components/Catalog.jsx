@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Catalog.css';
 import axios from 'axios';
-import FlowerCard from '../components/FlowerCard'; 
+import { Link } from 'react-router-dom';
 
 const Catalog = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,14 @@ const Catalog = () => {
       <h2>Katalog Bunga</h2>
       <div className="product-grid">
         {products.map(product => (
-          <FlowerCard key={product.id} product={product} />
+          <div key={product.id} className="product-card">
+            <img src={product.image} alt={product.name} className="product-image" />
+            <h3 className="product-name">{product.name}</h3>
+            <p className="product-price">Rp {product.price.toLocaleString()}</p>
+            <Link to={`/product/${product.id}`}>
+              <button className="detail-button">Lihat Detail</button>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

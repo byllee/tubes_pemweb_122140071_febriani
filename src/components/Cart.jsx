@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../styles/Cart.css';
-import { StoreContext } from '../context/StoreContext'; 
+import { useStore } from '../context/StoreContext';
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useContext(StoreContext);
+  const { state, removeFromCart } = useStore();
+  const cartItems = state.cart;
 
   return (
     <div className="cart-container">

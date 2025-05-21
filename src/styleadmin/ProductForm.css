@@ -1,0 +1,46 @@
+.admin-dashboard form {
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.admin-dashboard form h3 {
+  margin-top: 0;
+}
+
+.admin-dashboard form input,
+.admin-dashboard form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.admin-dashboard form button {
+  padding: 8px 16px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-dashboard form button[type="submit"] {
+  background-color: #451425;
+  color: white;
+}
+
+.admin-dashboard form button[type="submit"]:hover {
+  background-color: #451425;
+}
+
+.admin-dashboard form button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.admin-dashboard form button[type="button"]:hover {
+  background-color: #5a6268;
+}

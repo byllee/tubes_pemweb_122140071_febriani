@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
 
 const ProductDetail = () => {
-  const { dispatch } = useContext(StoreContext);
+  const { id } = useParams();
+  const { state, dispatch } = useContext(StoreContext);
 
-  const product = {
-    id: 1,
-    name: 'Paket Mawar Merah',
-    price: 150000,
-    description: 'Paket bunga mawar merah segar untuk berbagai acara.',
-    imageUrl: 'https://via.placeholder.com/200x200?text=Mawar+Merah' // opsional jika kamu butuh gambar
-  };
+  // Cari produk berdasarkan id dari URL
+  const product = state.products.find((item) => item.id.toString() === id);
+
+  if (!product) {
+    return <div style={{ padding: '2rem' }}>Produk tidak ditemukan.</div>;
+  }
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
@@ -20,6 +21,7 @@ const ProductDetail = () => {
   return (
     <div style={{ padding: '2rem' }}>
       <h2>{product.name}</h2>
+      <img src={product.imageUrl} alt={product.name} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
       <p>{product.description}</p>
       <p>Harga: Rp {product.price.toLocaleString()}</p>
       <button

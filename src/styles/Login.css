@@ -1,10 +1,26 @@
-.login {
-  padding: 2rem;
-  background-color: white;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding-top: 100px; 
+  min-height: calc(100vh - 100px); 
+  background-color: #fdfdfd;
 }
 
-.login h2 {
+.login,
+.role-selection {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  text-align: center;
+}
+
+.login h2,
+.role-selection h2 {
   color: #58181F;
+  margin-bottom: 1rem;
 }
 
 .login form {
@@ -19,15 +35,46 @@
   border-radius: 4px;
 }
 
-.login button {
+.login button,
+.role-selection button {
   background-color: #451425;
   color: white;
   border: none;
   padding: 0.8rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
+
+.login button:hover,
+.role-selection button:hover {
+  background-color: #722640;
+}
+
 .login .error-message {
   color: red;
   font-size: 0.9rem;
+}
+
+.role-selection button {
+  margin-top: 0.5rem;
+}
+
+.role-selection button + button {
+  margin-top: 1rem;
+}
+
+.back-button {
+  margin-top: 6rem;
+  background-color: transparent;
+  color: #451425;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.back-button:hover {
+  color: #722640;
 }

@@ -1,0 +1,38 @@
+.admin-dashboard {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+.admin-dashboard h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.admin-tabs button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #451425;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-tabs button:hover {
+  background-color: #451425;
+}
+
+.admin-content {
+  padding: 10px;
+}

@@ -10,7 +10,7 @@ const OrderList = () => {
       <h2>Daftar Pesanan</h2>
 
       {state.orders.length === 0 ? (
-        <p>Belum ada pesanan.</p>
+        <p>Belum ada pesanan, silahkan tambahkan pesanan.</p>
       ) : (
         <ul>
           {state.orders.map((order) => (
