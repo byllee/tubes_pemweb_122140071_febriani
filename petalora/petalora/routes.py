@@ -5,7 +5,7 @@ def includeme(config):
     # Default route
     config.add_route('home', '/')
     
-    # Admin routes dengan request_method untuk membedakan endpoint dengan URL yang sama
+    # Admin routes dengan request_method untuk membedakan endpoint dengan URL yang lain
     config.add_route('admin_list', '/api/admin', request_method='GET')
     config.add_route('admin_detail', '/api/admin/{id}', request_method='GET')
     config.add_route('admin_add', '/api/admin', request_method='POST')
