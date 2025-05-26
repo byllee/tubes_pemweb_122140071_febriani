@@ -8,7 +8,7 @@ Dalam pembuatan website ini, library yang digunakan:
 React.js
 Library Javascript yang dapat memudahkan dalam membangun UI serta
 menggunakan komponen-based, yang membuat kode lebih terstruktur dan mudah untuk
-dikelola. Beberapa contoh library yang diguanakan dalam React.js untuk pembuatan website ini
+dikelola. Beberapa contoh library yang digunakan dalam React.js untuk pembuatan website ini
 React Router, Axios.
    
 **#Fitur pada Aplikasi**
