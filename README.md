@@ -19,7 +19,7 @@ React Router, Axios.
 4. Keranjang
 5. Favorit
 
--Admin
+- Admin
 1. Melihat orderan pengguna
 2. Edit produk
 
