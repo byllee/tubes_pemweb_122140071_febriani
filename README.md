@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **#Petalora.id**
 
 Petalora merupakan website e-commerce yang menjual berbagai jenis bunga segar secara daring. Pengguna petalora dapat melihat katalog bunga, mencari dan memfilter produk, melakukan pemesanan, memilih metode pembayaran, dan menyukai bunga favorit. Website ini mempermudah pengguna dalam membeli bunga segar dengan kualitas terjadi
@@ -27,3 +28,19 @@ React Router, Axios.
 1. Pinterest
 2. Youtube
 3. Buku "DASAR_DASAR PEMROGRAMAN WEB DENGAN KERANGKA KERJA PYTHON PYRAMID DAN REACT JS"
+=======
+#Petalora.id
+Petalora merupakan website e-commerce yang menjual berbagai jenis bunga segar secara daring. Pengguna petalora dapat melihat katalog bunga, mencari dan memfilter produk, melakukan pemesanan, memilih metode pembayaran, serta dan menyukai bunga favorit.
+
+#Library
+
+#Fitur pada Aplikasi
+1. pemesanan (checkout)
+2. order history
+3. katalog bunga
+4. keranjang
+5. favorit
+6. (dapat bertambah)
+
+#Referensi
+>>>>>>> ceab6be (upgrade frontend lagi)

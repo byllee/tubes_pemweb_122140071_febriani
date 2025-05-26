@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import '../styles/OrderForm.css';
 import { useStore } from '../context/StoreContext';
+import axios from 'axios';
 
 const OrderForm = () => {
-  const [data, setData] = useState({ nama: '', alamat: '', metode: '' });
+  const [data, setData] = useState({ nama: '', alamat: '', metode: '', nomor_hp: '' });
   const { state, dispatch } = useStore();
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (state.cart.length === 0) {
@@ -18,18 +20,31 @@ const OrderForm = () => {
       return;
     }
 
-    const newOrder = {
-      id: Date.now(),
-      customer: data,
-      items: state.cart,
+    const orderPayload = {
+      nama: data.nama,
+      alamat: data.alamat,
+      nomor_hp: data.nomor_hp,
+      metode_pembayaran: data.metode,
+      items: state.cart.map(item => ({
+        produk_id: item.id,
+        jumlah: item.quantity || 1,
+        harga_satuan: item.price
+      }))
     };
 
-    dispatch({ type: 'PLACE_ORDER', payload: newOrder });
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/order', orderPayload);
 
-    // Bertujuan untuk mengosongkan keranjang setelah pemesanan
-    setData({ nama: '', alamat: '', metode: '' });
-
-    alert('Pesanan berhasil dikirim!');
+      dispatch({ type: 'CLEAR_CART' }); // Kosongkan keranjang
+      setData({ nama: '', alamat: '', metode: '', nomor_hp: '' }); // Reset form
+      alert('Pesanan berhasil dikirim!');
+    } catch (err) {
+      console.error(err);
+      alert('Gagal mengirim pesanan.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,6 +65,13 @@ const OrderForm = () => {
           onChange={handleChange}
           required
         />
+        <input
+          name="nomor_hp"
+          placeholder="Nomor HP"
+          value={data.nomor_hp}
+          onChange={handleChange}
+          required
+        />
         <select
           name="metode"
           value={data.metode}
@@ -60,7 +82,9 @@ const OrderForm = () => {
           <option value="cod">COD</option>
           <option value="transfer">Transfer Bank</option>
         </select>
-        <button type="submit">Pesan Sekarang</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Mengirim...' : 'Pesan Sekarang'}
+        </button>
       </form>
     </div>
   );

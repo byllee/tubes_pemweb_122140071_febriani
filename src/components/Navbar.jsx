@@ -1,9 +1,28 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useEffect } from 'react';
+>>>>>>> ceab6be (upgrade frontend lagi)
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaHeart, FaShoppingCart, FaUser } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
+<<<<<<< HEAD
+=======
+  const location = useLocation();
+
+  // Set class body sesuai route supaya CSS bisa target admin/user
+  useEffect(() => {
+    if (location.pathname.startsWith('/admin')) {
+      document.body.classList.add('admin');
+      document.body.classList.remove('user');
+    } else {
+      document.body.classList.add('user');
+      document.body.classList.remove('admin');
+    }
+  }, [location.pathname]);
+>>>>>>> ceab6be (upgrade frontend lagi)
 
   return (
     <nav className="navbar">

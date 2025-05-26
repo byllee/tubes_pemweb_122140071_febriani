@@ -14,7 +14,11 @@ const Login = () => {
     if (role === 'admin') {
       if (email === 'admin@petalora.com' && password === 'admin123') {
         alert('Login Admin berhasil!');
+<<<<<<< HEAD
         navigate('/admin-dashboard');
+=======
+        navigate('/admin'); // ✅ route yang benar
+>>>>>>> ceab6be (upgrade frontend lagi)
       } else {
         alert('Email atau password admin salah!');
       }

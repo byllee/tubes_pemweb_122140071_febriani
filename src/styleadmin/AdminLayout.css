@@ -1,0 +1,7 @@
+.admin-main {
+  padding: 2rem;
+  background-color: #f7f3f4;
+  min-height: calc(100vh - 60px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3a2c2e;
+}

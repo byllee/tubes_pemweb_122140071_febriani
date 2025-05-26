@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import ProductList from '../admin/ProductList';
 import OrderFormManager from '../admin/OrderFormManager';
@@ -19,6 +20,16 @@ const AdminDashboard = () => {
         {selectedTab === 'products' && <ProductList />}
         {selectedTab === 'orders' && <OrderFormManager />}
       </div>
+=======
+import React from 'react';
+
+const AdminDashboard = () => {
+  return (
+    <div>
+      <h2>Dashboard Admin</h2>
+      <p>Selamat datang di dashboard admin. Di sini kamu bisa memantau data penting.</p>
+      {/* Tambah konten dashboard sesuai kebutuhan */}
+>>>>>>> ceab6be (upgrade frontend lagi)
     </div>
   );
 };
