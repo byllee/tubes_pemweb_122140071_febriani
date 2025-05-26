@@ -1,7 +1,9 @@
 **#Petalora.id**
+
 Petalora merupakan website e-commerce yang menjual berbagai jenis bunga segar secara daring. Pengguna petalora dapat melihat katalog bunga, mencari dan memfilter produk, melakukan pemesanan, memilih metode pembayaran, dan menyukai bunga favorit. Website ini mempermudah pengguna dalam membeli bunga segar dengan kualitas terjadi
 
 **#Library**
+
 Dalam pembuatan website ini, library yang digunakan:
 React.js
 Library Javascript yang dapat memudahkan dalam membangun UI serta
