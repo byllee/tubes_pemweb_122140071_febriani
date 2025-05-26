@@ -3,14 +3,20 @@ import sys
 from pyramid.paster import bootstrap, setup_logging
 from sqlalchemy.exc import OperationalError
 
-from backend.models.meta import Base  # Untuk create_all
-from backend.models.produk import Produk  # Import model Produk
+from backend.models.meta import Base
+from backend.models.produk import Produk
+from backend.models.user import User
+from backend.models.order import Order
+from backend.models.order_item import OrderItem
+from backend.models.cart_item import CartItem
+from backend.models.favorit import Favorit
 
 
 def setup_models(dbsession):
     """
-    Tambahkan data awal ke dalam tabel produk.
+    Tambahkan data awal ke dalam tabel produk dan user.
     """
+    # Produk awal
     produk1 = Produk(
         nama='Mawar Merah',
         deskripsi='Buketan mawar merah segar untuk hadiah romantis.',
@@ -32,8 +38,22 @@ def setup_models(dbsession):
         stok=5,
         gambar_url='https://example.com/images/tulip_campuran.jpg'
     )
-
     dbsession.add_all([produk1, produk2, produk3])
+
+    # User awal (admin dan user biasa)
+    admin_user = User(
+        username='admin',
+        email='admin@petalora.id',
+        password_hash='admin123',  # Ganti dengan hash password sebenarnya
+        role='admin'
+    )
+    regular_user = User(
+        username='user1',
+        email='user1@petalora.id',
+        password_hash='user123',  # Ganti dengan hash password sebenarnya
+        role='user'
+    )
+    dbsession.add_all([admin_user, regular_user])
 
 
 def parse_args(argv):
@@ -51,7 +71,6 @@ def main(argv=sys.argv):
     env = bootstrap(args.config_uri)
 
     try:
-        # Dapatkan engine langsung dari dbsession bind
         engine = env['request'].dbsession.bind
         print("Membuat tabel-tabel di database jika belum ada...")
         Base.metadata.create_all(bind=engine)
@@ -59,7 +78,7 @@ def main(argv=sys.argv):
         with env['request'].tm:
             dbsession = env['request'].dbsession
             setup_models(dbsession)
-            print("Data produk awal berhasil ditambahkan.")
+            print("Data berhasil ditambahkan.")
 
     except OperationalError as e:
         print('''
