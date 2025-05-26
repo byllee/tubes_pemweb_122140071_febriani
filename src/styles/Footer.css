@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root, .app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  background-color: #451425;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 0; 
+}
+
+.footer-contact {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
