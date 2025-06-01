@@ -1,15 +1,15 @@
 
-**#Petalora.id 🌸**
+## Petalora.id 🌸
 
 Website ini merupakan sebuah platform digital yang terinspirasi dari konsep website e-commerce, namun dengan pendekatan yang disesuaikan untuk kebutuhan operasional toko fisik. Penggunaan website ini dilakukan saat pelanggan berada di toko secara fisik, baik melalui perangkat mereka sendiri  maupun perangkat yang disediakan oleh toko
 
-**#Tujuan 🧾**
+## Tujuan 🧾
 Dibuatnya website ini dengan tujuan untuk memberikan kemudahan kepada pengguna dalam melihat semua katalog produk, detail produk, dan harga tanpa harus bertanya kepada pegawai di toko secara fisik. 
 
-**#Konsep 🧠 **
+## Konsep 🧠 
 Petalora tidak bekerja seperti e-commerce full online. Website ini digunakan oleh pengguna yang sudah berada di toko bunga secara langsung. Pelanggan dapat memesan dan menyimpan produk secara digital, namun transaksi dan pengambilan dilakukan di toko.
 
-**#Library 🛠️**
+## Library 
 FRONTEND
 1. React.js - sebagai library utama untuk membangun frontend (antarmuka pengguna)
 2. react router dom - untuk routing halaman (navigasi antar halaman tanpa reload)
@@ -28,7 +28,7 @@ TOOLS PENDUKUNG
 2. pgAdmin - untuk pengelolaan dan visualisasi database PostgreSQL.
 3. Postman - untuk menguji API secara manual.
 
-**#Fitur pada Aplikasi ✨**
+## Fitur pada Aplikasi ✨
 USER
 1. Dashboard user
 2. Register dan login user
@@ -42,7 +42,7 @@ Admin
 3. Edit produk detail
 4. Mengelola katalog (tambah, hapus, edit)
 
-**#Alur Kerja Web ✨**
+## Alur Kerja Web ✨
 1. User mendaftar/login
 2. Melihat bunga di katalog
 3. Melihat produk detail
