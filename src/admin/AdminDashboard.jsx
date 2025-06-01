@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import ProductList from '../admin/ProductList';
-import OrderFormManager from '../admin/OrderFormManager';
+import AdminOrderManager from './AdminOrderManager'; // pastikan file ini ada di src/admin
 import '../styleadmin/AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -10,6 +9,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h1>Dashboard Admin</h1>
+      <p>Selamat datang di dashboard admin. Di sini kamu bisa memantau dan mengelola data penting.</p>
       
       <div className="admin-tabs">
         <button onClick={() => setSelectedTab('products')}>Kelola Produk</button>
@@ -18,18 +18,8 @@ const AdminDashboard = () => {
 
       <div className="admin-content">
         {selectedTab === 'products' && <ProductList />}
-        {selectedTab === 'orders' && <OrderFormManager />}
+        {selectedTab === 'orders' && <AdminOrderManager />}
       </div>
-=======
-import React from 'react';
-
-const AdminDashboard = () => {
-  return (
-    <div>
-      <h2>Dashboard Admin</h2>
-      <p>Selamat datang di dashboard admin. Di sini kamu bisa memantau data penting.</p>
-      {/* Tambah konten dashboard sesuai kebutuhan */}
->>>>>>> ceab6be (upgrade frontend lagi)
     </div>
   );
 };

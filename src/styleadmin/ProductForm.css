@@ -1,12 +1,47 @@
+/* Style tombol edit produk */
+.btn-edit {
+  background-color: #451425;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+  background-color: #331020;
+}
+
+/* Style tombol batal / cancel */
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+/* Style form edit produk */
 .admin-dashboard form {
   background-color: #f0f0f0;
   padding: 15px;
   margin-top: 20px;
   border-radius: 8px;
+  max-width: 600px;
 }
 
 .admin-dashboard form h3 {
   margin-top: 0;
+  color: #451425;
 }
 
 .admin-dashboard form input,
@@ -17,30 +52,17 @@
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
 }
 
+.admin-dashboard form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Contoh untuk jarak antar tombol */
 .admin-dashboard form button {
-  padding: 8px 16px;
   margin-right: 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.admin-dashboard form button[type="submit"] {
-  background-color: #451425;
-  color: white;
-}
-
-.admin-dashboard form button[type="submit"]:hover {
-  background-color: #451425;
-}
-
-.admin-dashboard form button[type="button"] {
-  background-color: #6c757d;
-  color: white;
-}
-
-.admin-dashboard form button[type="button"]:hover {
-  background-color: #5a6268;
+  font-family: inherit;
 }

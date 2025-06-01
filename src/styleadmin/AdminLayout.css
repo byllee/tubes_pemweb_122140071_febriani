@@ -1,7 +1,61 @@
+/* Layout utama untuk halaman admin */
 .admin-main {
   padding: 2rem;
   background-color: #f7f3f4;
   min-height: calc(100vh - 60px);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #3a2c2e;
+}
+
+/* Navbar admin */
+.admin-navbar {
+  background-color: #2f1a1e;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Navigasi kiri (Dashboard, Produk, Pesanan) */
+.admin-nav-left {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Link navigasi */
+.admin-navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-navbar a:hover {
+  background-color: #451425;
+}
+
+/* Link aktif */
+.admin-navbar a.active {
+  background-color: #7e4750;
+  box-shadow: inset 0 -3px 0 #f8e6e6;
+}
+
+/* Tombol kembali */
+.admin-back-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.admin-back-button:hover {
+  background-color: #fff;
+  color: #2f1a1e;
 }

@@ -20,45 +20,91 @@
 
 .cart-item {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
   background-color: #f9f9f9;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  font-size: 1.1rem;
 }
 
 .cart-item img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 8px;
 }
 
 .cart-item h4 {
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.5rem 0;
   color: #333333;
   flex-grow: 1;
+  font-weight: 600;
 }
 
 .cart-item p {
   margin: 0 1rem 0 0;
   color: #555555;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .cart-item button {
   background-color: #451425;
   color: white;
   border: none;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .cart-item button:hover {
-  background-color: #6c2a3b; 
+  background-color: #6c2a3b;
+}
+
+/* Style tombol lihat detail (button.detail-button) */
+.detail-button {
+  background-color: white;
+  border: 2px solid #451425;
+  color: #451425;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-button:hover {
+  background-color: #451425;
+  color: white;
+}
+
+/* Style tombol tambah ke keranjang agar sama dengan tombol lihat detail */
+.add-to-cart-button {
+  background-color: white;
+  border: 2px solid #451425;
+  color: #451425;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-to-cart-button:hover:not(:disabled) {
+  background-color: #451425;
+  color: white;
+}
+
+.add-to-cart-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }

@@ -1,5 +1,5 @@
 .home-hero {
-  background-color: #65081F;
+  background-color: #65081F; /* latar hero tetap dramatis */
   padding: 4rem 2rem;
   color: #fff;
 }
@@ -62,8 +62,9 @@
   margin: 0 auto;
 }
 
+/* Rekomendasi Produk */
 .featured-section {
-  background-color: #f8f4f6;
+  background-color: #f2e6ea; /* sedikit lebih gelap dari putih untuk harmonisasi */
   padding: 3rem 2rem;
   text-align: center;
 }
@@ -81,6 +82,54 @@
   padding: 0 1rem;
 }
 
+.flower-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.flower-item:hover {
+  transform: translateY(-5px);
+}
+
+.flower-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.flower-name {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #451425;
+}
+
+.flower-price {
+  color: #5B4148;
+  margin: 0.4rem 0 1rem;
+  font-weight: bold;
+}
+
+.detail-button {
+  padding: 0.5rem 1rem;
+  background-color: #451425;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.detail-button:hover {
+  background-color: #5B4148;
+}
+
 .center-button {
   margin-top: 2rem;
 }
@@ -90,7 +139,9 @@
   border: 2px solid #451425;
   background-color: transparent;
   color: #451425;
+  font-weight: 600;
   cursor: pointer;
+  border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

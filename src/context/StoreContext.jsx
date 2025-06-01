@@ -1,69 +1,70 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
+import { useOrderItem } from '../hook/useOrderItem'; // pastikan path benar
 
-export const StoreContext = createContext();
+const CartContext = createContext();
 
-const initialState = {
-  cart: [],
-  favorites: [],
-  orders: [],
-  products: [],
-};
+export const CartProvider = ({ children }) => {
+  const {
+    orderItems,
+    setOrderItems,
+    fetchOrderItems,
+    createOrderItem,
+    deleteOrderItem,
+    orderItemsLoading,
+    orderItemsError,
+    actionLoading,
+    actionError,
+  } = useOrderItem();
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'ADD_TO_CART':
-      return { ...state, cart: [...state.cart, action.payload] };
+  useEffect(() => {
+    fetchOrderItems(); // Ambil data keranjang dari backend saat awal
+  }, [fetchOrderItems]);
 
-    case 'REMOVE_FROM_CART':
-      return { ...state, cart: state.cart.filter(item => item.id !== action.payload) };
+  const addToCart = async (item) => {
+    try {
+      const newItem = await createOrderItem(item); // Tambahkan ke backend
+      setOrderItems((prev) => (prev ? [...prev, newItem] : [newItem])); // Update state lokal
+    } catch (err) {
+      console.error('Gagal menambahkan ke keranjang:', err);
+    }
+  };
 
-    case 'CLEAR_CART':
-      return { ...state, cart: [] };
+  const removeFromCart = async (id) => {
+    try {
+      await deleteOrderItem(id);
+      setOrderItems((prev) => prev ? prev.filter((i) => i.id !== id) : []);
+    } catch (err) {
+      console.error('Gagal menghapus item dari keranjang:', err);
+    }
+  };
 
-    case 'ADD_TO_FAVORITES':
-      return { ...state, favorites: [...state.favorites, action.payload] };
-
-    case 'REMOVE_FROM_FAVORITES':
-      return { ...state, favorites: state.favorites.filter(item => item.id !== action.payload) };
-
-    case 'PLACE_ORDER':
-      return {
-        ...state,
-        orders: [...state.orders, action.payload],
-        cart: [], // clear cart after order
-      };
-
-    default:
-      return state;
-  }
-}
-
-export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const addToCart = (item) => dispatch({ type: 'ADD_TO_CART', payload: item });
-  const removeFromCart = (id) => dispatch({ type: 'REMOVE_FROM_CART', payload: id });
-  const clearCart = () => dispatch({ type: 'CLEAR_CART' });
-
-  const addToFavorites = (item) => dispatch({ type: 'ADD_TO_FAVORITES', payload: item });
-  const removeFromFavorites = (id) => dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: id });
-
-  const placeOrder = (order) => dispatch({ type: 'PLACE_ORDER', payload: order });
+  const clearCart = async () => {
+    try {
+      if (orderItems && orderItems.length > 0) {
+        for (const item of orderItems) {
+          await deleteOrderItem(item.id);
+        }
+        setOrderItems([]);
+      }
+    } catch (err) {
+      console.error('Gagal mengosongkan keranjang:', err);
+    }
+  };
 
   return (
-    <StoreContext.Provider value={{
-      state,
-      dispatch,
-      addToCart,
-      removeFromCart,
-      clearCart,
-      addToFavorites,
-      removeFromFavorites,
-      placeOrder
-    }}>
+    <CartContext.Provider
+      value={{
+        cart: orderItems || [],
+        addToCart,
+        removeFromCart,
+        clearCart,
+        loading: orderItemsLoading || actionLoading,
+        error: orderItemsError || actionError,
+      }}
+    >
       {children}
-    </StoreContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export const useStore = () => useContext(StoreContext);
+export const useCart = () => useContext(CartContext);

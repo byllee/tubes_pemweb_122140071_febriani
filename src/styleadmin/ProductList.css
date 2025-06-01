@@ -24,3 +24,7 @@ li button {
 li button:hover {
   background-color: #451425;
 }
+
+li button:first-of-type {
+  margin-right: 8px;
+}
