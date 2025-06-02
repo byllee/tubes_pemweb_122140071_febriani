@@ -4,41 +4,20 @@ import ProductForm from './ProductForm';
 import '../styleadmin/ProductList.css';
 
 const ProductList = () => {
-  const {
-    products,
-    productsLoading,
-    productsError,
-    fetchProducts,
-    deleteProduct,
-    updateProduct,
-    createProduct,
-  } = useProduct();
-
-  console.log('useProduct hook output:', {
-    products,
-    productsLoading,
-    productsError,
-    fetchProducts,
-  });
-
+  const { products, productsLoading, productsError, fetchProducts, deleteProduct, updateProduct, createProduct } = useProduct();
   const [editingProduct, setEditingProduct] = useState(null);
   const [addingNew, setAddingNew] = useState(false);
 
   useEffect(() => {
-    if (fetchProducts) {
-      console.log('Calling fetchProducts...');
-      fetchProducts();
-    } else {
-      console.error('fetchProducts is undefined or not a function!');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    fetchProducts();
+  }, [fetchProducts]);
 
   const handleUpdate = async (updatedProduct) => {
     try {
+      // Perbaikan: kirimkan id dan payload terpisah
       await updateProduct(updatedProduct.id, updatedProduct);
       alert('Produk berhasil diperbarui');
-      await fetchProducts();
+      fetchProducts();
       setEditingProduct(null);
       setAddingNew(false);
     } catch (err) {
@@ -51,10 +30,9 @@ const ProductList = () => {
     try {
       await createProduct(newProduct);
       alert('Produk berhasil ditambahkan');
-      await fetchProducts();
+      fetchProducts();
       setAddingNew(false);
-    } catch (err) {
-      console.error('Gagal tambah produk:', err);
+    } catch {
       alert('Gagal menambahkan produk');
     }
   };
@@ -64,34 +42,29 @@ const ProductList = () => {
       try {
         await deleteProduct(id);
         alert('Produk berhasil dihapus');
-        await fetchProducts();
-      } catch (err) {
-        console.error('Gagal hapus produk:', err);
+        fetchProducts();
+      } catch {
         alert('Gagal menghapus produk');
       }
     }
   };
 
   if (productsLoading) return <p>Loading...</p>;
-  if (productsError) return <p style={{ color: 'red' }}>{productsError}</p>;
+  if (productsError) return <p>{productsError}</p>;
 
   return (
     <div className="product-list">
       <h2>Daftar Produk</h2>
-      <button onClick={() => { setAddingNew(true); setEditingProduct(null); }}>
-        Tambah Produk
-      </button>
+      <button onClick={() => { setAddingNew(true); setEditingProduct(null); }}>Tambah Produk</button>
 
       <ul>
         {products.map(product => (
           <li key={product.id} className="product-item">
-            <strong>{product.name}</strong> - Rp {Number(product.price).toLocaleString()}
+            <strong>{product.name}</strong> - Rp {product.price.toLocaleString()}
             <br />
             <em>{product.description}</em>
             <br />
-            <button onClick={() => { setEditingProduct(product); setAddingNew(false); }}>
-              Edit
-            </button>
+            <button onClick={() => { setEditingProduct(product); setAddingNew(false); }}>Edit</button>
             <button onClick={() => handleDelete(product.id)}>Hapus</button>
           </li>
         ))}
@@ -107,7 +80,7 @@ const ProductList = () => {
 
       {addingNew && (
         <ProductForm
-          product={{ name: '', price: 0, description: '', image_url: '', stock: 0 }}
+          product={{ name: '', price: 0, description: '' }}
           onSave={handleAdd}
           onCancel={() => setAddingNew(false)}
         />

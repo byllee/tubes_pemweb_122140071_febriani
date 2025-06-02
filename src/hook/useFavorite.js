@@ -15,12 +15,13 @@ export function useFavorite() {
   const [actionLoading, setActionLoading] = useState(false);
   const [actionError, setActionError] = useState(null);
 
-  const fetchFavorites = useCallback(async () => {
+  const fetchFavorites = useCallback(async (userId) => {
     setFavoritesLoading(true);
     setFavoritesError(null);
     try {
-      const { data } = await axios.get(`${API_BASE}/favorites`);
-      setFavorites(data?.favorites || data); // Sesuaikan jika struktur hanya array
+      const url = userId ? `${API_BASE}/favorites?user_id=${userId}` : `${API_BASE}/favorites`;
+      const { data } = await axios.get(url);
+      setFavorites(data?.favorites || data);
     } catch (error) {
       setFavoritesError(error.response?.data?.error || 'Gagal mengambil favorite');
     } finally {
@@ -49,8 +50,8 @@ export function useFavorite() {
     setActionError(null);
     try {
       const { data } = await axios.post(`${API_BASE}/favorites/create`, payload);
-      setFavorites(prev => [...prev, data]);
-      return data;
+      setFavorites(prev => [...prev, data.favorite || data]);
+      return data.favorite || data;
     } catch (error) {
       setActionError(error.response?.data?.error || 'Gagal membuat favorite');
       throw error;

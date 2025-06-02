@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';  // Hapus FaHeart
+import { FaUser } from 'react-icons/fa';  // Hanya FaUser
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -53,14 +53,11 @@ const Navbar = () => {
       <ul className="nav-center">
         <li><NavLink to="/" end className={getNavLinkClass}>Beranda</NavLink></li>
         <li><NavLink to="/catalog" className={getNavLinkClass}>Katalog</NavLink></li>
-        <li><NavLink to="/orders" className={getNavLinkClass}>Pesanan</NavLink></li>
+        {/* Navigasi "Pesanan" dihapus */}
       </ul>
 
       <div className="nav-right" style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-        {/* Hapus NavLink Favorit */}
-        <NavLink to="/cart" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FaShoppingCart />
-        </NavLink>
+        {/* Tombol favorit dihapus */}
 
         <button
           onClick={() => setUserMenuOpen(!userMenuOpen)}
